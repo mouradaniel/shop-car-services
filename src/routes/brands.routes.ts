@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import { BrandsRepository } from '../repositories/BrandsRepository';
+import { CreateBrandService } from '../services/CreateBrandService';
 
 const brandsRoutes = Router();
 const brandsRepository = new BrandsRepository();
@@ -8,7 +9,9 @@ const brandsRepository = new BrandsRepository();
 brandsRoutes.post('/', (req, res) => {
   const { name, history } = req.body;
 
-  brandsRepository.create({ name, history });
+  const createBrandService = new CreateBrandService(brandsRepository);
+
+  createBrandService.execute({ name, history });
 
   return res.status(201).send();
 });
