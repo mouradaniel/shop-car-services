@@ -1,11 +1,7 @@
 import { Brand } from '../model/Brand';
+import { IBrandsRepository, ICreateBrandDTO } from './IBrandsRepository';
 
-interface ICreateBrandDTO {
-  name: string;
-  history: string;
-}
-
-class BrandsRepository {
+class BrandsRepository implements IBrandsRepository {
   private brands: Brand[];
 
   constructor() {
@@ -26,6 +22,11 @@ class BrandsRepository {
 
   list(): Brand[] {
     return this.brands;
+  }
+
+  findByName(name: string): Brand {
+    const brand = this.brands.find(brand => brand.name === name);
+    return brand;
   }
 }
 
