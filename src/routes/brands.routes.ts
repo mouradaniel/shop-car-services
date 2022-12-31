@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { BrandsRepository } from '../repositories/BrandsRepository';
-import { CreateBrandService } from '../services/CreateBrandService';
+import { BrandsRepository } from '../modules/cars/repositories/BrandsRepository';
+import { CreateBrandService } from '../modules/cars/services/CreateBrandService';
 
 const brandsRoutes = Router();
 const brandsRepository = new BrandsRepository();
