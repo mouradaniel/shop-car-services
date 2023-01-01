@@ -7,5 +7,42 @@
     "contact": {
       "email": "daniel-moura@outlook.com"
     }
+  },
+  "paths": {
+    "/brands": {
+      "post": {
+        "tags": ["Brand"],
+        "summary": "Create a brand",
+        "description": "Create a new brand.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "history": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Volkswagen",
+                  "history": "A Volkswagen é uma fabricante alemã de veículos que pertence ao Grupo Volkswagen. É o maior fabricante de automóveis do mundo e tem a sua sede na cidade de Wolfsburg, na Baixa Saxônia."                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Brand Already Exists!"
+          }
+        }
+      }
+    }
   }
 }
