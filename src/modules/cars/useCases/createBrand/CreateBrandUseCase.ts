@@ -1,11 +1,11 @@
-import { IBrandsRepository } from '../repositories/IBrandsRepository';
+import { IBrandsRepository } from '../../repositories/IBrandsRepository';
 
 interface IRequest {
   name: string;
   history: string;
 }
 
-class CreateBrandService {
+class CreateBrandUseCase {
   constructor(private brandsRepository: IBrandsRepository) {}
 
   execute({ name, history }: IRequest): void {
@@ -19,4 +19,4 @@ class CreateBrandService {
   }
 }
 
-export { CreateBrandService };
+export { CreateBrandUseCase };

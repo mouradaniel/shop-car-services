@@ -1,19 +1,13 @@
 import { Router } from 'express';
 
 import { BrandsRepository } from '../modules/cars/repositories/BrandsRepository';
-import { CreateBrandService } from '../modules/cars/services/CreateBrandService';
+import { createBrandController } from '../modules/cars/useCases/createBrand';
 
 const brandsRoutes = Router();
 const brandsRepository = new BrandsRepository();
 
 brandsRoutes.post('/', (req, res) => {
-  const { name, history } = req.body;
-
-  const createBrandService = new CreateBrandService(brandsRepository);
-
-  createBrandService.execute({ name, history });
-
-  return res.status(201).send();
+  return createBrandController.handle(req, res);
 });
 
 brandsRoutes.get('/', (req, res) => {
