@@ -30,6 +30,7 @@ class ImportBrandUseCase {
           });
         })
         .on('end', () => {
+          fs.promises.unlink(file.path);
           resolve(brands);
         })
         .on('error', error => {
