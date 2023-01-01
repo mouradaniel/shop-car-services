@@ -40,7 +40,19 @@ class ImportBrandUseCase {
 
   async execute(file: Express.Multer.File): Promise<void> {
     const brands = await this.loadBrands(file);
-    console.log(brands);
+
+    brands.map(async brand => {
+      const { name, history } = brand;
+
+      const alreadyExistsBrand = this.brandsRepository.findByName(name);
+
+      if (!alreadyExistsBrand) {
+        this.brandsRepository.create({
+          name,
+          history,
+        });
+      }
+    });
   }
 }
 
