@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Shop Car Documentation",
+    "description": "This is a complete api for the car sales industry, for sellers and buyers.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "daniel-moura@outlook.com"
+    }
+  }
+}
