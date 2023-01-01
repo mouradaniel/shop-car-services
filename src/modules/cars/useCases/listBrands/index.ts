@@ -1,4 +1,4 @@
-import { BrandsRepository } from '../../repositories/BrandsRepository';
+import { BrandsRepository } from '../../repositories/implementations/BrandsRepository';
 import { ListBrandsController } from './listBrandsController';
 import { ListBradsUseCase } from './listBrandsUseCase';
 

@@ -1,5 +1,5 @@
-import { Brand } from '../model/Brand';
-import { IBrandsRepository, ICreateBrandDTO } from './IBrandsRepository';
+import { Brand } from '../../model/Brand';
+import { IBrandsRepository, ICreateBrandDTO } from '../IBrandsRepository';
 
 class BrandsRepository implements IBrandsRepository {
   private brands: Brand[];
