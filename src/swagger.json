@@ -42,6 +42,34 @@
             "description": "Brand Already Exists!"
           }
         }
+      },
+      "get": {
+        "tags": ["Brand"],
+        "summary": "List all brands",
+        "description": "List all brands",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
