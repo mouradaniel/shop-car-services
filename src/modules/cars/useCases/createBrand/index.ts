@@ -2,7 +2,7 @@ import { BrandsRepository } from '../../repositories/BrandsRepository';
 import { CreateBrandController } from './CreateBrandController';
 import { CreateBrandUseCase } from './CreateBrandUseCase';
 
-const brandsRepository = new BrandsRepository();
+const brandsRepository = BrandsRepository.getInstance();
 
 const createBrandUseCase = new CreateBrandUseCase(brandsRepository);
 

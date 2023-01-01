@@ -4,8 +4,18 @@ import { IBrandsRepository, ICreateBrandDTO } from './IBrandsRepository';
 class BrandsRepository implements IBrandsRepository {
   private brands: Brand[];
 
-  constructor() {
+  private static INSTANCE: BrandsRepository;
+
+  private constructor() {
     this.brands = [];
+  }
+
+  public static getInstance(): BrandsRepository {
+    if (!BrandsRepository.INSTANCE) {
+      BrandsRepository.INSTANCE = new BrandsRepository();
+    }
+
+    return BrandsRepository.INSTANCE;
   }
 
   create({ name, history }: ICreateBrandDTO): void {

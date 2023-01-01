@@ -2,7 +2,7 @@ import { BrandsRepository } from '../../repositories/BrandsRepository';
 import { ListBrandsController } from './listBrandsController';
 import { ListBradsUseCase } from './listBrandsUseCase';
 
-const brandsRepository = new BrandsRepository();
+const brandsRepository = BrandsRepository.getInstance();
 const listBrandsUseCase = new ListBradsUseCase(brandsRepository);
 const listBrandsController = new ListBrandsController(listBrandsUseCase);
 
