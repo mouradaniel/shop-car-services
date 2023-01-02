@@ -1,11 +1,32 @@
 version: "2.13"
 
 services:
+  database:
+    image: postgres
+    container_name: database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=shop-car
+    volumes:
+      - pgdata:/data/postgres
+
   app:
     build: .
+    restart: always
     container_name: shop-car-services
     ports:
       - 3000:3000
     volumes:
       - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata: 
     
