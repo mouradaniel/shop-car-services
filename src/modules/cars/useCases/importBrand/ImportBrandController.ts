@@ -4,12 +4,12 @@ import { container } from 'tsyringe';
 import { ImportBrandUseCase } from './ImportBrandUseCase';
 
 class ImportBrandController {
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { file } = req;
 
     const importBrandUseCase = container.resolve(ImportBrandUseCase);
 
-    importBrandUseCase.execute(file);
+    await importBrandUseCase.execute(file);
 
     return res.send();
   }

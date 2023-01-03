@@ -3,7 +3,7 @@ import multer from 'multer';
 
 import { CreateBrandController } from '../modules/cars/useCases/createBrand/CreateBrandController';
 import { ImportBrandController } from '../modules/cars/useCases/importBrand/ImportBrandController';
-import listBrandsController from '../modules/cars/useCases/listBrands';
+import { ListBrandsController } from '../modules/cars/useCases/listBrands/ListBrandsController';
 
 const brandsRoutes = Router();
 
@@ -13,12 +13,11 @@ const upload = multer({
 
 const createBrandController = new CreateBrandController();
 const importBrandController = new ImportBrandController();
+const listBrandsController = new ListBrandsController();
 
 brandsRoutes.post('/', createBrandController.handle);
 
-brandsRoutes.get('/', (req, res) => {
-  return listBrandsController().handle(req, res);
-});
+brandsRoutes.get('/', listBrandsController.handle);
 
 brandsRoutes.post(
   '/import',

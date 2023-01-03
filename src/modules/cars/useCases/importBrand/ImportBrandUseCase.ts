@@ -57,12 +57,11 @@ class ImportBrandUseCase {
     brands.map(async brand => {
       const { name, history } = brand;
 
-      const alreadyExistsBrand = this.brandsRepository.findByName(name);
+      const alreadyExistsBrand = await this.brandsRepository.findByName(name);
 
       if (!alreadyExistsBrand) {
-        this.brandsRepository.create({
+        await this.brandsRepository.create({
           name,
-
           history,
         });
       }
