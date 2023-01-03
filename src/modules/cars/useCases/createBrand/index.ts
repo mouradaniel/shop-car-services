@@ -2,10 +2,12 @@ import { BrandsRepository } from '../../repositories/implementations/BrandsRepos
 import { CreateBrandController } from './CreateBrandController';
 import { CreateBrandUseCase } from './CreateBrandUseCase';
 
-const brandsRepository = BrandsRepository.getInstance();
+export default (): CreateBrandController => {
+  const brandsRepository = new BrandsRepository();
 
-const createBrandUseCase = new CreateBrandUseCase(brandsRepository);
+  const createBrandUseCase = new CreateBrandUseCase(brandsRepository);
 
-const createBrandController = new CreateBrandController(createBrandUseCase);
+  const createBrandController = new CreateBrandController(createBrandUseCase);
 
-export { createBrandController };
+  return createBrandController;
+};

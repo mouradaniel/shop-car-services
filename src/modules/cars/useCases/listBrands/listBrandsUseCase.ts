@@ -1,4 +1,4 @@
-import { Brand } from '../../model/Brand';
+import { Brand } from '../../entities/Brand';
 import { IBrandsRepository } from '../../repositories/IBrandsRepository';
 
 class ListBradsUseCase {

@@ -1,4 +1,4 @@
-import { Brand } from '../model/Brand';
+import { Brand } from '../entities/Brand';
 
 interface ICreateBrandDTO {
   name: string;
@@ -6,9 +6,9 @@ interface ICreateBrandDTO {
 }
 
 interface IBrandsRepository {
-  findByName(name: string): Brand;
-  list(): Brand[];
-  create({ name, history }: ICreateBrandDTO): void;
+  findByName(name: string): Promise<Brand>;
+  list(): Promise<Brand[]>;
+  create({ name, history }: ICreateBrandDTO): Promise<void>;
 }
 
 export { ICreateBrandDTO, IBrandsRepository };

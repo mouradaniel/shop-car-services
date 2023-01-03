@@ -8,14 +8,14 @@ interface IRequest {
 class CreateBrandUseCase {
   constructor(private brandsRepository: IBrandsRepository) {}
 
-  execute({ name, history }: IRequest): void {
-    const brandAlreadyExists = this.brandsRepository.findByName(name);
+  async execute({ name, history }: IRequest): Promise<void> {
+    const brandAlreadyExists = await this.brandsRepository.findByName(name);
 
     if (brandAlreadyExists) {
       throw new Error('Brand Already Exists!');
     }
 
-    this.brandsRepository.create({ name, history });
+    await this.brandsRepository.create({ name, history });
   }
 }
 

@@ -1,41 +1,31 @@
-import { Brand } from '../../model/Brand';
+import { getRepository, Repository } from 'typeorm';
+
+import { Brand } from '../../entities/Brand';
 import { IBrandsRepository, ICreateBrandDTO } from '../IBrandsRepository';
 
 class BrandsRepository implements IBrandsRepository {
-  private brands: Brand[];
+  private repository: Repository<Brand>;
 
-  private static INSTANCE: BrandsRepository;
-
-  private constructor() {
-    this.brands = [];
+  constructor() {
+    this.repository = getRepository(Brand);
   }
 
-  public static getInstance(): BrandsRepository {
-    if (!BrandsRepository.INSTANCE) {
-      BrandsRepository.INSTANCE = new BrandsRepository();
-    }
-
-    return BrandsRepository.INSTANCE;
-  }
-
-  create({ name, history }: ICreateBrandDTO): void {
-    const brand = new Brand();
-
-    Object.assign(brand, {
+  async create({ name, history }: ICreateBrandDTO): Promise<void> {
+    const brand = this.repository.create({
       name,
       history,
-      created_at: new Date(),
     });
 
-    this.brands.push(brand);
+    await this.repository.save(brand);
   }
 
-  list(): Brand[] {
-    return this.brands;
+  async list(): Promise<Brand[]> {
+    const brands = await this.repository.find();
+    return brands;
   }
 
-  findByName(name: string): Brand {
-    const brand = this.brands.find(brand => brand.name === name);
+  async findByName(name: string): Promise<Brand> {
+    const brand = await this.repository.findOne({ name });
     return brand;
   }
 }

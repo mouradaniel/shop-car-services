@@ -2,8 +2,10 @@ import { BrandsRepository } from '../../repositories/implementations/BrandsRepos
 import { ListBrandsController } from './listBrandsController';
 import { ListBradsUseCase } from './listBrandsUseCase';
 
-const brandsRepository = BrandsRepository.getInstance();
-const listBrandsUseCase = new ListBradsUseCase(brandsRepository);
-const listBrandsController = new ListBrandsController(listBrandsUseCase);
+export default (): ListBrandsController => {
+  const brandsRepository = new BrandsRepository();
+  const listBrandsUseCase = new ListBradsUseCase(brandsRepository);
+  const listBrandsController = new ListBrandsController(listBrandsUseCase);
 
-export { listBrandsController };
+  return listBrandsController;
+};

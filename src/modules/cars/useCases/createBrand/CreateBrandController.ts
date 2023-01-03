@@ -5,10 +5,10 @@ import { CreateBrandUseCase } from './CreateBrandUseCase';
 class CreateBrandController {
   constructor(private createBrandUseCase: CreateBrandUseCase) {}
 
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name, history } = req.body;
 
-    this.createBrandUseCase.execute({ name, history });
+    await this.createBrandUseCase.execute({ name, history });
 
     return res.status(201).send();
   }
