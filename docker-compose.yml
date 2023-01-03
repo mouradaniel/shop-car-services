@@ -16,8 +16,8 @@ services:
 
   app:
     build: .
-    restart: always
     container_name: shop-car-services
+    restart: always
     ports:
       - 3000:3000
     volumes:
@@ -28,5 +28,6 @@ services:
       - database
 
 volumes:
-  pgdata: 
+  pgdata:
+    driver: local
     
