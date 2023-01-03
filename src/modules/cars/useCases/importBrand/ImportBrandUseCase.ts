@@ -1,19 +1,26 @@
 import { parse } from 'csv-parse';
 import fs from 'fs';
+import { inject, injectable } from 'tsyringe';
 
 import { BrandsRepository } from '../../repositories/implementations/BrandsRepository';
 
 interface IImportBrand {
   name: string;
+
   history: string;
 }
 
+@injectable()
 class ImportBrandUseCase {
-  constructor(private brandsRepository: BrandsRepository) {}
+  constructor(
+    @inject('BrandsRepository')
+    private brandsRepository: BrandsRepository,
+  ) {}
 
   loadBrands(file: Express.Multer.File): Promise<IImportBrand[]> {
     return new Promise((resolve, reject) => {
       const stream = fs.createReadStream(file.path);
+
       const brands: IImportBrand[] = [];
 
       const parseFile = parse();
@@ -21,18 +28,23 @@ class ImportBrandUseCase {
       stream.pipe(parseFile);
 
       parseFile
+
         .on('data', async line => {
           const [name, history] = line;
 
           brands.push({
             name,
+
             history,
           });
         })
+
         .on('end', () => {
           fs.promises.unlink(file.path);
+
           resolve(brands);
         })
+
         .on('error', error => {
           reject(error);
         });
@@ -50,6 +62,7 @@ class ImportBrandUseCase {
       if (!alreadyExistsBrand) {
         this.brandsRepository.create({
           name,
+
           history,
         });
       }
