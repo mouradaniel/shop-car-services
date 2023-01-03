@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import createBrandController from '../modules/cars/useCases/createBrand';
+import { CreateBrandController } from '../modules/cars/useCases/createBrand/CreateBrandController';
 import importBrandController from '../modules/cars/useCases/importBrand';
 import listBrandsController from '../modules/cars/useCases/listBrands';
 
@@ -11,9 +11,9 @@ const upload = multer({
   dest: './tmp',
 });
 
-brandsRoutes.post('/', (req, res) => {
-  return createBrandController().handle(req, res);
-});
+const createBrandController = new CreateBrandController();
+
+brandsRoutes.post('/', createBrandController.handle);
 
 brandsRoutes.get('/', (req, res) => {
   return listBrandsController().handle(req, res);

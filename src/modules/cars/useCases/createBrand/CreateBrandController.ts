@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import { CreateBrandUseCase } from './CreateBrandUseCase';
 
 class CreateBrandController {
-  constructor(private createBrandUseCase: CreateBrandUseCase) {}
-
   async handle(req: Request, res: Response): Promise<Response> {
     const { name, history } = req.body;
 
-    await this.createBrandUseCase.execute({ name, history });
+    const createBrandUseCase = container.resolve(CreateBrandUseCase);
+
+    await createBrandUseCase.execute({ name, history });
 
     return res.status(201).send();
   }

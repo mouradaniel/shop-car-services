@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe';
+
 import { IBrandsRepository } from '../../repositories/IBrandsRepository';
 
 interface IRequest {
@@ -5,8 +7,12 @@ interface IRequest {
   history: string;
 }
 
+@injectable()
 class CreateBrandUseCase {
-  constructor(private brandsRepository: IBrandsRepository) {}
+  constructor(
+    @inject('BrandsRepository')
+    private brandsRepository: IBrandsRepository,
+  ) {}
 
   async execute({ name, history }: IRequest): Promise<void> {
     const brandAlreadyExists = await this.brandsRepository.findByName(name);

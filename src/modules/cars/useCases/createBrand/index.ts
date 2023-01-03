@@ -1,13 +1,17 @@
-import { BrandsRepository } from '../../repositories/implementations/BrandsRepository';
-import { CreateBrandController } from './CreateBrandController';
-import { CreateBrandUseCase } from './CreateBrandUseCase';
+// import { BrandsRepository } from '../../repositories/implementations/BrandsRepository';
 
-export default (): CreateBrandController => {
-  const brandsRepository = new BrandsRepository();
+// import { CreateBrandController } from './CreateBrandController';
 
-  const createBrandUseCase = new CreateBrandUseCase(brandsRepository);
+// import { CreateBrandUseCase } from './CreateBrandUseCase';
 
-  const createBrandController = new CreateBrandController(createBrandUseCase);
+// export default (): CreateBrandController => {
 
-  return createBrandController;
-};
+//   const brandsRepository = new BrandsRepository();
+
+//   const createBrandUseCase = new CreateBrandUseCase(brandsRepository);
+
+//   const createBrandController = new CreateBrandController(createBrandUseCase);
+
+//   return createBrandController;
+
+// };
