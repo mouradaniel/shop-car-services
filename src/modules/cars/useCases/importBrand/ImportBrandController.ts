@@ -11,7 +11,7 @@ class ImportBrandController {
 
     await importBrandUseCase.execute(file);
 
-    return res.send();
+    return res.status(201).send();
   }
 }
 
