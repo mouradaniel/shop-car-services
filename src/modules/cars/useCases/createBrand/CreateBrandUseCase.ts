@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '../../../../errors/AppError';
 import { IBrandsRepository } from '../../repositories/IBrandsRepository';
 
 interface IRequest {
@@ -18,7 +19,7 @@ class CreateBrandUseCase {
     const brandAlreadyExists = await this.brandsRepository.findByName(name);
 
     if (brandAlreadyExists) {
-      throw new Error('Brand Already Exists!');
+      throw new AppError('Brand Already Exists!');
     }
 
     await this.brandsRepository.create({ name, history });
