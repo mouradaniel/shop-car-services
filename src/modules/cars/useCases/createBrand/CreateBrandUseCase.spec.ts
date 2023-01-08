@@ -1,3 +1,4 @@
+import { AppError } from '../../../../errors/AppError';
 import { BrandsRepositoryInMemory } from '../../repositories/in-memory/BrandsRepositoryInMemomry';
 import { CreateBrandUseCase } from './CreateBrandUseCase';
 
@@ -24,5 +25,24 @@ describe('Create Brand', () => {
     const createdBrand = await brandsRepositoryInMemory.findByName(brand.name);
 
     expect(createdBrand).toHaveProperty('id');
+  });
+
+  it('Should not be able to create a new brand with same name', async () => {
+    expect(async () => {
+      const brand = {
+        name: 'Brand Test',
+        history: 'Brand History Test',
+      };
+
+      await createBrandUseCase.execute({
+        name: brand.name,
+        history: brand.history,
+      });
+
+      await createBrandUseCase.execute({
+        name: brand.name,
+        history: brand.history,
+      });
+    }).rejects.toBeInstanceOf(AppError);
   });
 });
