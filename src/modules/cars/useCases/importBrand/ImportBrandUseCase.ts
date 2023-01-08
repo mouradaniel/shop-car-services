@@ -2,7 +2,7 @@ import { parse } from 'csv-parse';
 import fs from 'fs';
 import { inject, injectable } from 'tsyringe';
 
-import { BrandsRepository } from '../../repositories/implementations/BrandsRepository';
+import { BrandsRepository } from '@modules/cars/repositories/implementations/BrandsRepository';
 
 interface IImportBrand {
   name: string;

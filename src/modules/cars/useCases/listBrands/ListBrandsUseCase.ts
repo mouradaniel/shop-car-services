@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { Brand } from '../../entities/Brand';
-import { IBrandsRepository } from '../../repositories/IBrandsRepository';
+import { Brand } from '@modules/cars/entities/Brand';
+import { IBrandsRepository } from '@modules/cars/repositories/IBrandsRepository';
 
 @injectable()
 class ListBrandsUseCase {

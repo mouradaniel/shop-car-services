@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { Brand } from '../../entities/Brand';
+import { Brand } from '@modules/cars/entities/Brand';
+
 import { IBrandsRepository, ICreateBrandDTO } from '../IBrandsRepository';
 
 class BrandsRepository implements IBrandsRepository {
