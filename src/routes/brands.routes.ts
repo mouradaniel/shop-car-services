@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import { CreateBrandController } from '../modules/cars/useCases/createBrand/CreateBrandController';
-import { ImportBrandController } from '../modules/cars/useCases/importBrand/ImportBrandController';
-import { ListBrandsController } from '../modules/cars/useCases/listBrands/ListBrandsController';
+import { CreateBrandController } from '@modules/cars/useCases/createBrand/CreateBrandController';
+import { ImportBrandController } from '@modules/cars/useCases/importBrand/ImportBrandController';
+import { ListBrandsController } from '@modules/cars/useCases/listBrands/ListBrandsController';
 
 const brandsRoutes = Router();
 
