@@ -1,5 +1,5 @@
-import { AppError } from '@errors/AppError';
 import { BrandsRepositoryInMemory } from '@modules/cars/repositories/in-memory/BrandsRepositoryInMemomry';
+import { AppError } from '@shared/errors/AppError';
 
 import { CreateBrandUseCase } from './CreateBrandUseCase';
 
