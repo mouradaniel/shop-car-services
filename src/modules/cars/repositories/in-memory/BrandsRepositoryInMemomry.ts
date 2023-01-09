@@ -1,4 +1,4 @@
-import { Brand } from '@modules/cars/entities/Brand';
+import { Brand } from '@modules/cars/infra/typeorm/entities/Brand';
 
 import { IBrandsRepository, ICreateBrandDTO } from '../IBrandsRepository';
 

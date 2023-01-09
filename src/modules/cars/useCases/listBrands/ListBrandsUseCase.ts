@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { Brand } from '@modules/cars/entities/Brand';
+import { Brand } from '@modules/cars/infra/typeorm/entities/Brand';
 import { IBrandsRepository } from '@modules/cars/repositories/IBrandsRepository';
 
 @injectable()

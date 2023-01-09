@@ -1,4 +1,4 @@
-import { Brand } from '../entities/Brand';
+import { Brand } from '../infra/typeorm/entities/Brand';
 
 interface ICreateBrandDTO {
   name: string;
