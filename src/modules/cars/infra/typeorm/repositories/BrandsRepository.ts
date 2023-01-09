@@ -1,11 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { Brand } from '@modules/cars/infra/typeorm/entities/Brand';
-
 import {
   IBrandsRepository,
   ICreateBrandDTO,
-} from '../../../repositories/IBrandsRepository';
+} from '@modules/cars/repositories/IBrandsRepository';
 
 class BrandsRepository implements IBrandsRepository {
   private repository: Repository<Brand>;
