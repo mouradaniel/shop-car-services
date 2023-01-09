@@ -4,7 +4,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import sweaggerUi from 'swagger-ui-express';
 
-import { router } from './routes';
+import { router } from './shared/infra/http/routes';
 import swaggerFile from './swagger.json';
 
 import './database';
