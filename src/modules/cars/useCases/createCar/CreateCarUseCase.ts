@@ -22,7 +22,7 @@ class CreateCarUseCase {
     listPrice,
     salePrice,
   }: IRequest): Promise<void> {
-    this.carsRepository.create({
+    await this.carsRepository.create({
       name,
       description,
       listPrice,
