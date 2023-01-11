@@ -16,10 +16,10 @@ class Car {
   brand_id?: string;
 
   @Column()
-  listPrice: string;
+  listPrice: number;
 
   @Column()
-  salePrice: string;
+  salePrice: number;
 
   @CreateDateColumn()
   created_at: Date;
