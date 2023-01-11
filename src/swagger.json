@@ -123,6 +123,50 @@
           }
         }
       }
+    },
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create a car",
+        "description": "Create a new car.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "listPrice": {
+                    "type": "number"
+                  },
+                  "salePrice": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "name": "Gol",
+                  "description": "Gol 1.0",
+                  "listPrice": 30000,
+                  "salePrice": 27000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Brand Already Exists!"
+          }
+        }
+      }
     }
   },
   "definitions": {
