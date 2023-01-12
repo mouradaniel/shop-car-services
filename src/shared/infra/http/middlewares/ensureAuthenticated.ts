@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, request, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
 import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
@@ -12,7 +12,7 @@ export async function ensureAuthenticated(
   req: Request,
   res: Response,
   next: NextFunction,
-) {
+): Promise<void> {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -26,6 +26,10 @@ export async function ensureAuthenticated(
       token,
       'edba49522063eeae11eb58a80902f0aa',
     ) as IPayload;
+
+    request.user = {
+      id: user_id,
+    };
 
     const usersRepository = new UsersRepository();
     const user = usersRepository.findById(user_id);

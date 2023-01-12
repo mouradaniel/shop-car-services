@@ -23,6 +23,10 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ]
   }
 }
