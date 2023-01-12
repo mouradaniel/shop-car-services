@@ -17,12 +17,14 @@ class CarsRepository implements ICarsRepository {
     description,
     listPrice,
     salePrice,
+    brand_id,
   }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       name,
       description,
       listPrice,
       salePrice,
+      brand_id,
     });
 
     await this.repository.save(car);

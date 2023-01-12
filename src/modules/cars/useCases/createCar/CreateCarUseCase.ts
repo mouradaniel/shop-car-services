@@ -8,6 +8,7 @@ interface IRequest {
   description: string;
   listPrice: number;
   salePrice: number;
+  brand_id: string;
 }
 
 @injectable()
@@ -22,12 +23,14 @@ class CreateCarUseCase {
     description,
     listPrice,
     salePrice,
+    brand_id,
   }: IRequest): Promise<Car> {
     const car = await this.carsRepository.create({
       name,
       description,
       listPrice,
       salePrice,
+      brand_id,
     });
 
     return car;

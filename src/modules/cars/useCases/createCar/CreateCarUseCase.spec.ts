@@ -17,6 +17,7 @@ describe('Create Car', () => {
       description: 'Car Test Description',
       listPrice: 30000,
       salePrice: 27000,
+      brand_id: 'Brand-Car-Test-Id',
     });
   });
 });

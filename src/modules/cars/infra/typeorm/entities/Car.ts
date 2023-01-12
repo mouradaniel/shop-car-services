@@ -1,5 +1,14 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  JoinColumn,
+  ManyToOne,
+} from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+
+import { Brand } from './Brand';
 
 @Entity('cars')
 class Car {
@@ -11,6 +20,10 @@ class Car {
 
   @Column()
   description: string;
+
+  @ManyToOne(() => Brand)
+  @JoinColumn({ name: 'brand_id' })
+  brand: Brand;
 
   @Column()
   brand_id?: string;

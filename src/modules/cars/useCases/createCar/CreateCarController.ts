@@ -5,7 +5,7 @@ import { CreateCarUseCase } from './CreateCarUseCase';
 
 class CreateCarController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { name, description, listPrice, salePrice } = req.body;
+    const { name, description, listPrice, salePrice, brand_id } = req.body;
 
     const createCarUseCase = container.resolve(CreateCarUseCase);
 
@@ -14,6 +14,7 @@ class CreateCarController {
       description,
       listPrice,
       salePrice,
+      brand_id,
     });
 
     return res.status(201).json(car);

@@ -3,6 +3,7 @@ interface ICreateCarDTO {
   description: string;
   listPrice: number;
   salePrice: number;
+  brand_id: string;
 }
 
 export { ICreateCarDTO };
