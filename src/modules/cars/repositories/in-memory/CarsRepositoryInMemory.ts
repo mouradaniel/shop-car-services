@@ -7,6 +7,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = [];
 
   async create({
+    id,
     name,
     description,
     listPrice,
@@ -16,6 +17,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
     const car = new Car();
 
     Object.assign(car, {
+      id,
       name,
       description,
       listPrice,
