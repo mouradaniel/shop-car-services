@@ -7,7 +7,7 @@ class CarImage {
   id: string;
 
   @Column()
-  car_di: string;
+  car_id: string;
 
   @Column()
   image_name: string;
