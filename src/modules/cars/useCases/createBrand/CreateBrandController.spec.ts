@@ -28,7 +28,7 @@ describe('Create Brand Controller', () => {
     await connection.close;
   });
 
-  it('Should be able to list create a new brand', async () => {
+  it('Should be able to create a new brand', async () => {
     const responseToken = await request(app).post('/sessions').send({
       email: 'admin@shopcar.com',
       password: 'admin',
