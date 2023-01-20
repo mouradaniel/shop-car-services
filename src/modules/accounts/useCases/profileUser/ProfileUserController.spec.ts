@@ -19,7 +19,7 @@ describe('Create User Controller', () => {
   });
 
   it('Should be able to get the current profile', async () => {
-    const test = await request(app).post('/users').send({
+    await request(app).post('/users').send({
       email: 'test_profile@test.com',
       password: '1234',
       document: '11122233344',
