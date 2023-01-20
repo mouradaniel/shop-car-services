@@ -12,11 +12,16 @@ describe('Create User Controller', () => {
     await connection.runMigrations();
   });
 
+  afterAll(async () => {
+    await connection.dropDatabase();
+    await connection.close;
+  });
+
   it('Should be able to create a new user', async () => {
     const response = await request(app).post('/users').send({
-      email: 'test@test.com',
+      email: 'test_create@test.com',
       password: '1234',
-      document: '11122233345',
+      document: '11122233311',
       username: 'test_user',
       name: ' Test',
     });
@@ -26,18 +31,18 @@ describe('Create User Controller', () => {
 
   it('Should not be able to create a new user with same email', async () => {
     await request(app).post('/users').send({
-      email: 'test@test.com',
+      email: 'test_same_email@test.com',
       password: '1234',
-      document: '11122233345',
-      username: 'test_user',
+      document: '11122233366',
+      username: 'test_same_email',
       name: ' Test',
     });
 
     const response = await request(app).post('/users').send({
-      email: 'test@test.com',
+      email: 'test_same_email@test.com',
       password: '1234',
-      document: '11122233345',
-      username: 'test_user',
+      document: '11122233377',
+      username: 'test_same_email',
       name: ' Test',
     });
 
